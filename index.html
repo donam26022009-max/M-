@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffd6e7">
+<title>🎁 Món Quà Bí Mật Tặng Mẹ</title>
+<style>
+/* =========================
+   CÀI ĐẶT CHUNG
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --pink: #ff75a9;
+    --deep-pink: #e84383;
+    --purple: #a18cd1;
+    --text: #91476b;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #ffffff 0,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f6,
+            #ffd6e7,
+            #e7ddff,
+            #fff0f6
+        );
+}
+button {
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible {
+    outline: 3px solid #9b3671;
+    outline-offset: 4px;
+}
+.hidden {
+    display: none !important;
+}
+/* =========================
+   NỀN LẤP LÁNH
+========================= */
+#sparkles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+.sparkle {
+    position: absolute;
+    color: white;
+    animation: twinkle 2s ease-in-out infinite;
+    text-shadow: 0 0 12px #ff70ad;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+/* =========================
+   MÀN HÌNH MỞ ĐẦU
+========================= */
+.screen {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+}
+.badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    background: #ffffff90;
+    backdrop-filter: blur(10px);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    animation: fadeUp 1s both;
+}
+h1 {
+    font-size: clamp(32px, 8vw, 58px);
+    line-height: 1.3;
+    color: #d63384;
+    text-shadow:
+        0 3px 10px #ff8dbb55;
+    animation: fadeUp 1s 0.2s both;
+}
+.subtitle {
+    max-width: 350px;
+    margin: 18px auto 25px;
+    font-size: 16px;
+    line-height: 1.9;
+    animation: fadeUp 1s 0.4s both;
+}
+/* =========================
+   HỘP QUÀ
+========================= */
+.gift-area {
+    margin: 35px auto 25px;
+    perspective: 800px;
+}
+.gift {
+    width: 170px;
+    height: 175px;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+    animation: giftFloat 2.5s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+}
+.gift-body {
+    position: absolute;
+    width: 145px;
+    height: 105px;
+    left: 12px;
+    bottom: 0;
+    border-radius: 8px;
+    background:
+        linear-gradient(
+            135deg,
+            #ff9fc5,
+            #ed4e91
+        );
+    box-shadow:
+        0 15px 35px #e8438350;
+}
+.gift-body::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    left: 60px;
+    background: #fff0a8;
+}
+.gift-body::after {
+    content: "♡";
+    position: absolute;
+    top: 25px;
+    left: 55px;
+    font-size: 35px;
+    color: white;
+}
+.gift-lid {
+    position: absolute;
+    width: 170px;
+    height: 32px;
+    left: 0;
+    top: 35px;
+    border-radius: 7px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffc2db,
+            #ff6fa6
+        );
+    z-index: 3;
+    transition:
+        transform 1s ease,
+        opacity 0.7s;
+}
+.gift-lid::before {
+    content: "🎀";
+    position: absolute;
+    left: 62px;
+    top: -39px;
+    font-size: 45px;
+}
+.gift.opened .gift-lid {
+    transform:
+        translateY(-100px)
+        rotate(-25deg);
+    opacity: 0.2;
+}
+@keyframes giftFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+/* =========================
+   NÚT BẤM
+========================= */
+.main-btn {
+    border: none;
+    padding: 15px 28px;
+    border-radius: 50px;
+    background:
+        linear-gradient(
+            135deg,
+            #ff82b1,
+            #d63384
+        );
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        0 10px 30px #e8438360;
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+.main-btn:hover {
+    box-shadow:
+        0 12px 35px #e8438380;
+}
+.main-btn:active {
+    transform: scale(0.95);
+}
+.hint {
+    margin-top: 18px;
+    font-size: 13px;
+    opacity: 0.75;
+}
+/* =========================
+   HIỆU ỨNG HẠT BAY
+========================= */
+#effects {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 20;
+}
+.particle {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    will-change: transform, opacity;
+    animation:
+        fall var(--duration, 4s)
+        linear forwards;
+}
+@keyframes fall {
+    to {
+        transform:
+            translate3d(
+                var(--drift, 20px),
+                110vh,
+                0
+            )
+            rotate(720deg);
+        opacity: 0;
+    }
+}
+@keyframes burst {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(1.3);
+        opacity: 0;
+    }
+}
+.burst-particle {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    font-size: 25px;
+    pointer-events: none;
+    animation: burst 1.5s ease-out forwards;
+}
+/* =========================
+   PHẦN LỜI CHÚC
+========================= */
+.content {
+    display: none;
+    position: relative;
+    z-index: 3;
+    padding: 35px 18px 65px;
+    animation: fadeUp 1s both;
+}
+.content.show {
+    display: block;
+}
+.section {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+.section-title {
+    color: #d63384;
+    font-size: clamp(27px, 6vw, 38px);
+    margin-bottom: 15px;
+}
+.section-desc {
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+/* =========================
+   PHONG THƯ
+========================= */
+.envelope {
+    width: min(100%, 430px);
+    margin: 30px auto;
+    position: relative;
+    padding: 28px 23px;
+    background: #fffdf9;
+    border-radius: 8px 8px 20px 20px;
+    border-top: 6px solid #ff9dc5;
+    box-shadow:
+        0 15px 45px #a24b7825;
+    line-height: 2;
+    text-align: left;
+}
+.envelope::before {
+    content: "💌";
+    display: block;
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+.envelope h3 {
+    text-align: center;
+    color: #d63384;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+.envelope p {
+    margin-bottom: 14px;
+}
+.signature {
+    text-align: right;
+    color: #d63384;
+    font-family: Georgia, serif;
+    font-style: italic;
+    margin-top: 20px;
+}
+/* =========================
+   KHUNG LỜI NHẮN
+========================= */
+.message-card {
+    max-width: 480px;
+    margin: 25px auto;
+    padding: 25px 20px;
+    background: #ffffffa8;
+    border: 1px solid #ffffff;
+    border-radius: 22px;
+    box-shadow:
+        0 10px 35px #b56d9b18;
+    line-height: 1.9;
+}
+/* =========================
+   KẾT THÚC
+========================= */
+.final-section {
+    text-align: center;
+    padding: 30px 10px;
+}
+.final-heart {
+    font-size: 65px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.2s infinite;
+}
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.18);
+    }
+    30% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(1.12);
+    }
+}
+.final-title {
+    color: #d63384;
+    font-size: clamp(30px, 7vw, 45px);
+    line-height: 1.5;
+}
+.footer {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 40px;
+}
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 380px) {
+    .screen {
+        padding: 25px 14px;
+    }
+    .gift {
+        transform: scale(0.9);
+    }
+    .gift:hover {
+        transform: scale(0.95);
+    }
+    .envelope {
+        padding: 23px 18px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+<body>
+<!-- NỀN LẤP LÁNH -->
+<div id="sparkles" aria-hidden="true"></div>
+<!-- HIỆU ỨNG HOA VÀ TRÁI TIM -->
+<div id="effects" aria-hidden="true"></div>
+<!-- MÀN HÌNH MỞ ĐẦU -->
+<section class="screen" id="intro">
+    <div class="badge">
+        🌷 20 THÁNG 10 · TẶNG MẸ 🌷
+    </div>
+    <h1>
+        Mẹ yêu ơi!
+        <br>
+        <span>Con có quà cho mẹ 💗</span>
+    </h1>
+    <p class="subtitle">
+        Hôm nay con có một món quà nhỏ
+        muốn dành tặng người phụ nữ
+        tuyệt vời nhất trong cuộc đời con.
+        <br>
+        <b>Mẹ hãy mở ra nhé! 🎁</b>
+    </p>
+    <!-- HỘP QUÀ -->
+    <div class="gift-area">
+        <div
+            class="gift"
+            id="gift"
+            role="button"
+            tabindex="0"
+            aria-label="Mở hộp quà"
+        >
+            <div class="gift-body"></div>
+            <div class="gift-lid"></div>
+        </div>
+    </div>
+    <button class="main-btn" id="openGift">
+        🎁 MỞ QUÀ BÍ MẬT
+    </button>
+    <p class="hint">
+        Chạm vào hộp quà để khám phá bất ngờ 💝
+    </p>
+</section>
+<!-- NỘI DUNG SAU KHI MỞ QUÀ -->
+<main class="content" id="content">
+    <!-- LỜI CHÚC ĐẦU TIÊN -->
+    <section class="section">
+        <h2 class="section-title">
+            🌸 Chúc mừng ngày 20/10 🌸
+        </h2>
+        <p class="section-desc">
+            Gửi người phụ nữ mà con yêu thương nhất.
+            <br>
+            Hôm nay, mọi điều ngọt ngào nhất
+            đều dành cho mẹ! 💖
+        </p>
+        <div class="message-card">
+            <p>
+                🌹 Mẹ là bông hoa đẹp nhất trong khu vườn
+                của gia đình mình.
+            </p>
+            <p>
+                ❤️ Mẹ là người luôn yêu thương con,
+                ngay cả khi con chưa biết cách
+                nói lời cảm ơn.
+            </p>
+            <p>
+                ✨ Và mẹ chính là món quà quý giá
+                nhất mà cuộc đời đã dành cho con.
+            </p>
+        </div>
+        <button class="main-btn" id="moreFlowers">
+            🌹 Gửi mẹ ngàn đóa hoa
+        </button>
+    </section>
+    <!-- LÁ THƯ -->
+    <section class="section">
+        <h2 class="section-title">
+            💌 Một lá thư dành cho mẹ
+        </h2>
+        <p class="section-desc">
+            Có những lời con muốn nói với mẹ
+            từ rất lâu rồi...
+        </p>
+        <article class="envelope">
+            <p>
+                Mẹ à!
+            </p>
+            <p>
+                Nhân ngày Phụ nữ Việt Nam 20/10,
+                con muốn gửi đến mẹ những điều này
+            </p>
+            <p>
+                Cảm ơn mẹ vì đã luôn chăm sóc,
+                yêu thương và dành cho con những điều
+                tốt đẹp nhất. Cảm ơn mẹ vì những ngày
+                tháng vất vả, những lần lo lắng và
+                tất cả những hy sinh mà đôi khi con
+                chưa thể hiểu hết.
+            </p>
+            <p>
+                Con biết mình không phải lúc nào
+                cũng ngoan, cũng hiểu chuyện.
+                Có những lúc con vô tâm, khiến mẹ
+                phải lo lắng. Nhưng mẹ hãy luôn nhớ
+                rằng con yêu mẹ rất nhiều.
+            </p>
+            <p>
+                Con chúc mẹ luôn mạnh khỏe,
+                bình an, vui vẻ và lúc nào cũng
+                nở nụ cười thật tươi.
+            </p>
+            <p>
+                Con mong những ngày tháng sau này,
+                mẹ sẽ có thật nhiều niềm vui,
+                ít lo toan hơn và luôn cảm nhận được
+                tình yêu thương của gia đình.
+            </p>
+            <p>
+                Con sẽ cố gắng trưởng thành hơn,
+                chăm ngoan hơn và biết quan tâm
+                đến mẹ nhiều hơn mỗi ngày.
+            </p>
+            <p>
+                Đối với con, mẹ không cần phải
+                trở thành một người hoàn hảo,
+                bởi vì trong trái tim con,
+                mẹ đã là người tuyệt vời nhất rồi!
+            </p>
+            <div class="signature">
+                <br>
+                Chúc mẹ 20/10 thật hạnh phúc 🌷
+            </div>
+        </article>
+    </section>
+    <!-- LỜI NHẮN CUỐI -->
+    <section class="section final-section">
+        <div class="final-heart">💖</div>
+        </h2>
+        <p class="section-desc" style="margin-top: 22px;">
+            <br><br>
+        </p>
+        <button class="main-btn" id="finalSurprise">
+            ✨ Mẹ nhấn vào đây nhé!
+        </button>
+        <p class="footer">
+            Được tạo bằng tất cả tình yêu dành cho mẹ ❤️
+            <br>
+            Happy Vietnamese Women's Day · 20/10
+        </p>
+    </section>
+</main>
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+<script>
+/* =========================
+   TẠO HIỆU ỨNG LẤP LÁNH
+========================= */
+const sparkles = document.getElementById("sparkles");
+for (let i = 0; i < 35; i++) {
+    const star = document.createElement("span");
+    star.className = "sparkle";
+    star.textContent = "✦";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize =
+        (8 + Math.random() * 13) + "px";
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+    sparkles.appendChild(star);
+}
+/* =========================
+   TẠO CÁNH HOA BAY
+========================= */
+const effects = document.getElementById("effects");
+const flowers = [
+    "🌸",
+    "🌷",
+    "🌹",
+    "💗",
+    "💕",
+    "✨",
+    "💖"
+];
+function createPetal() {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+    particle.textContent =
+        flowers[Math.floor(Math.random() * flowers.length)];
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+    particle.style.setProperty(
+        "--drift",
+        (Math.random() * 180 - 90) + "px"
+    );
+    particle.style.setProperty(
+        "--duration",
+        (3 + Math.random() * 4) + "s"
+    );
+    effects.appendChild(particle);
+    setTimeout(() => {
+        particle.remove();
+    }, 7500);
+}
+/* =========================
+   HIỆU ỨNG BÙNG NỔ
+========================= */
+function burstEffect(count = 35) {
+    const symbols = [
+        "💖",
+        "🌸",
+        "🌹",
+        "✨",
+        "💕",
+        "🎉"
+    ];
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement("span");
+        particle.className = "burst-particle";
+        particle.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+        const angle =
+            Math.random() * Math.PI * 2;
+        const distance =
+            80 + Math.random() * Math.min(
+                window.innerWidth * 0.45,
+                260
+            );
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        particle.style.setProperty("--x", x + "px");
+        particle.style.setProperty("--y", y + "px");
+        document.body.appendChild(particle);
+        setTimeout(() => {
+            particle.remove();
+        }, 1700);
+    }
+}
+/* =========================
+   PHÁO HOA
+========================= */
+function fireworks() {
+    const canvas = document.createElement("canvas");
+    canvas.style.position = "fixed";
+    canvas.style.inset = "0";
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.style.pointerEvents = "none";
+    canvas.style.zIndex = "25";
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        canvas.remove();
+        burstEffect(50);
+        return;
+    }
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth * ratio;
+        canvas.height = window.innerHeight * ratio;
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+    resizeCanvas();
+    const particles = [];
+    const colors = [
+        "#ff4f9a",
+        "#ffd166",
+        "#ffffff",
+        "#c77dff",
+        "#ff85a1",
+        "#80ed99"
+    ];
+    for (let j = 0; j < 5; j++) {
+        const x =
+            window.innerWidth * (0.15 + Math.random() * 0.7);
+        const y =
+            window.innerHeight * (0.15 + Math.random() * 0.4);
+        const color =
+            colors[Math.floor(Math.random() * colors.length)];
+        for (let i = 0; i < 45; i++) {
+            const angle =
+                (Math.PI * 2 * i) / 45;
+            const speed =
+                1.2 + Math.random() * 3.8;
+            particles.push({
+                x,
+                y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                alpha: 1,
+                color,
+                radius: 1.5 + Math.random() * 2.5
+            });
+        }
+    }
+    let frame = 0;
+    let animationId;
+    function animate() {
+        frame++;
+        ctx.clearRect(
+            0,
+            0,
+            window.innerWidth,
+            window.innerHeight
+        );
+        for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.025;
+            p.vx *= 0.99;
+            p.vy *= 0.99;
+            p.alpha -= 0.009;
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(
+                p.x,
+                p.y,
+                p.radius,
+                0,
+                Math.PI * 2
+            );
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        if (
+            frame < 130 &&
+            particles.some(p => p.alpha > 0)
+        ) {
+            animationId = requestAnimationFrame(animate);
+        } else {
+            cancelAnimationFrame(animationId);
+            canvas.remove();
+        }
+    }
+    animate();
+}
+/* =========================
+   MỞ HỘP QUÀ
+========================= */
+const gift = document.getElementById("gift");
+const openGiftButton =
+    document.getElementById("openGift");
+const intro =
+    document.getElementById("intro");
+const content =
+    document.getElementById("content");
+let opened = false;
+function openGift() {
+    if (opened) return;
+    opened = true;
+    gift.classList.add("opened");
+    openGiftButton.textContent =
+        "💖 Món quà dành riêng cho mẹ";
+    burstEffect(55);
+    fireworks();
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createPetal, i * 90);
+    }
+    setTimeout(() => {
+        intro.style.display = "none";
+        content.classList.add("show");
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        burstEffect(30);
+    }, 1200);
+}
+openGiftButton.addEventListener("click", openGift);
+gift.addEventListener("click", openGift);
+gift.addEventListener("keydown", function(event) {
+    if (
+        event.key === "Enter" ||
+        event.key === " "
+    ) {
+        event.preventDefault();
+        openGift();
+    }
+});
+/* =========================
+   GỬI MẸ NGÀN ĐÓA HOA
+========================= */
+document
+    .getElementById("moreFlowers")
+    .addEventListener("click", function() {
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createPetal, i * 70);
+        }
+        fireworks();
+        burstEffect(40);
+    });
+/* =========================
+   BẤT NGỜ CUỐI CÙNG
+========================= */
+document
+    .getElementById("finalSurprise")
+    .addEventListener("click", function() {
+        fireworks();
+        burstEffect(65);
+        for (let i = 0; i < 45; i++) {
+            setTimeout(createPetal, i * 80);
+        }
+        this.textContent =
+            "💗 CON YÊU MẸ NHIỀU LẮM! 💗";
+    });
+/* =========================
+   CÁNH HOA RƠI NHẸ NHÀNG
+========================= */
+setInterval(() => {
+    if (
+        !document.hidden &&
+        Math.random() > 0.3
+    ) {
+        createPetal();
+    }
+}, 650);
+</script>
+</body>
+</html>
